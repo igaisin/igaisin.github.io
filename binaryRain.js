@@ -49,3 +49,18 @@ function draw()
 }
 
 setInterval(draw, 88);
+
+$(function(){
+    resizeCanvas();
+});
+
+$(window).on('resize', function(){
+    resizeCanvas();
+});
+
+function resizeCanvas()
+{
+    var canvas = $('#canvas');
+    canvas.css("width", $(window).width());
+    canvas.css("height", $(window).height());
+}
