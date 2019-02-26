@@ -24,6 +24,7 @@
 
     html, body {
       background: transparent;
+      background-image: url("https://www.transparenttextures.com/patterns/3px-tile.png");
       width: 100%;
       height: 100%;
       margin: 0;
@@ -31,11 +32,11 @@
       font-family: 'Shadows Into Light', cursive;
     }
 
-    canvas {
+    .canvas-container {
       width: 100%;
       height: 100%;
       position: fixed;
-      z-index: -1;
+      z-index: 1;
     }
 
     #mainCard {
@@ -44,49 +45,45 @@
       transform: translateY(-50%);
       padding: 33px;
       border: solid transparent;
-      border-radius: 25%;
-      background-color: rgba(0, 191, 255, 0.2);
+      border-radius: 50%;
+      background-color: rgba(0, 0, 0, 0.69);
     }
     #mainCard h1, h2 {
-      text-align:center; 
-      color: whitesmoke; 
+      margin-bottom: 0%;
+      text-align:center;
+      color: snow; 
       font-family: 'Shadows Into Light', cursive;
+      font-weight: bold;
+      text-shadow: 
+        0 0 2px #ffffff,
+        0 0 4px #00ffff,
+        0 0 5px #ffffff,
+        0 0 7px #00ffff;
     }
 
-    a {
-      text-decoration: none;
-    }
-
-    .fab {
-      padding: 10px;
-      font-size: 30px;
-      text-align: center;
-    }
-
-    .fab:hover {
-      border-radius: 13px;
-      background-color: snow;
-      opacity: 0.88;
+    #mainCard h4, a {
+      text-align:center;
+      font-weight: bold;
+      color: steelblue;
+      text-shadow:
+        0 0 2px #00ffff,
+        0 0 4px #ffffff,
+        0 0 5px #ffffff,
+        0 0 7px #00ffff;
     }
   </style>
 </head>
 
 <body>
 
-  <div style="z-index: 0; position: absolute; left: 50%; top: 50%;">
+  <div style="z-index: 10; position: absolute; left: 50%; top: 50%;">
     <div id="mainCard">
-      <h1>Hi, I'm Ilyas Gaisin</h1>
-      <h2>Go Developer</h2>
-      <div style="margin-top: 30px; text-align: center;">
-        <a href="mailto:rayssunrise@gmail.com" style="color: #DD4B39; text-decoration:none;" class="fab fa-google"></a>      
-        <a href="https://vk.com/iGaisin" style="color: #2C4762; text-decoration:none;" class="fab fa-vk"></a>
-        <a href="https://facebook.com/isGaisin" style="color: #3B5998; text-decoration:none" class="fab fa-facebook-f"></a>
-        <a href="skype:iGaisin" style="color: #00AFF0; text-decoration:none;" class="fab fa-skype"></a>
-        <a href="https://twitter.com/isGaisin" style="color: #55ACEE; text-decoration:none" class="fab fa-twitter"></a>
-      </div>      
+      <h2>Hi, I'm Ilyas Gaisin</h2>
+      <h1>Go Developer</h1>
+      <h4><a href="https://t.me/igaisin">Telegram</a></h4>
     </div>
   </div>
-  <canvas id="binaryRain"></canvas>
+  <canvas id="binaryCanvas"></canvas>
 
 
   
@@ -100,8 +97,13 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
     crossorigin="anonymous"></script>
+  
+  <!-- fabricjs 2d -->
+  <script src="lib/fabric.min.js"></script>
+
   <!-- Optional JavaScript -->
-  <script src="binaryRain.js"></script>
+  <script src="binary.js"></script>
+
 </body>
 
 </html>
