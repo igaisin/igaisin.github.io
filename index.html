@@ -23,20 +23,12 @@
     @import url('https://fonts.googleapis.com/css?family=Shadows+Into+Light');
 
     html, body {
-      background: transparent;
-      background-image: url("https://www.transparenttextures.com/patterns/3px-tile.png");
+      background: #222324;
       width: 100%;
       height: 100%;
       margin: 0;
       padding: 0;
       font-family: 'Shadows Into Light', cursive;
-    }
-
-    .canvas-container {
-      width: 100%;
-      height: 100%;
-      position: fixed;
-      z-index: 1;
     }
 
     #mainCard {
@@ -49,41 +41,38 @@
       background-color: rgba(0, 0, 0, 0.69);
     }
     #mainCard h1, h2 {
+      margin-top: 10px;
       margin-bottom: 0%;
       text-align:center;
       color: snow; 
       font-family: 'Shadows Into Light', cursive;
       font-weight: bold;
       text-shadow: 
-        0 0 2px #ffffff,
-        0 0 4px #00ffff,
-        0 0 5px #ffffff,
-        0 0 7px #00ffff;
+        0 0 4px #ffffff,
+        0 0 8px #00ffff;
     }
 
-    #mainCard h4, a {
+    #mainCard a, h4 {
+      margin-top: 10px;
       text-align:center;
       font-weight: bold;
       color: steelblue;
       text-shadow:
-        0 0 2px #00ffff,
-        0 0 4px #ffffff,
-        0 0 5px #ffffff,
-        0 0 7px #00ffff;
+        0 0 3px #00ffff,
+        0 0 5px #ffffff;
     }
   </style>
 </head>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/4.5.1/pixi.min.js"></script>
 <body>
 
   <div style="z-index: 10; position: absolute; left: 50%; top: 50%;">
     <div id="mainCard">
       <h2>Hi, I'm Ilyas Gaisin</h2>
       <h1>Go Developer</h1>
-      <h4><a href="https://t.me/igaisin">Telegram</a></h4>
+      <a href="https://t.me/igaisin"><h4>Telegram</h4></a>
     </div>
   </div>
-  <canvas id="binaryCanvas"></canvas>
 
 
   
@@ -97,9 +86,6 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
     crossorigin="anonymous"></script>
-  
-  <!-- fabricjs 2d -->
-  <script src="lib/fabric.min.js"></script>
 
   <!-- Optional JavaScript -->
   <script src="binary.js"></script>

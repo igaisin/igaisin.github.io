@@ -1,58 +1,74 @@
-var canvas = new fabric.Canvas('binaryCanvas', {
-	backgroundColor: 'rgba(0, 0, 0, 0.8)',
-	renderOnAddRemove: false
-});
-canvas.setDimensions({
-	width: window.innerWidth,
-	height: window.innerHeight
-});
-canvas.selection = false
+	var app;
+	var bitStr, bit;
+	var binary = "01101001011001110110000101101001011100110110100101101110";
+	binary = binary.split("");
+	var fontSize = 22;
 
-window.addEventListener("resize", resizeCanvas, false);
-function resizeCanvas() {
-	canvas.setWidth(window.innerWidth);
-	canvas.setHeight(window.innerHeight);
-	canvas.renderAll();
+	var columns = (window.innerWidth / fontSize) - 1,
+	rows = (window.innerHeight / fontSize) - 1;
+
+	init();
+
+window.addEventListener("resize", function() {
+	app.renderer.resize(window.innerWidth, window.innerHeight);
+});
+
+
+
+function init() {
+	app = new PIXI.Application(window.innerWidth, window.innerHeight, {
+		transparent: true
+	});
+	document.body.appendChild(app.view);
+
+	createBinary();
+
+	app.ticker.add(updateBinary);
+	// console.log(app.stage)
 }
 
-var bits, bit;
-var binary = "01101001011001110110000101101001011100110110100101101110";
-binary = binary.split("");
-var fontSize = 33;
-var firstSlt = false
-var columns = (window.innerWidth / (fontSize / 1.2)) - 1;
-var rows = (window.innerHeight / (fontSize / 1.2)) - 2;
+function createBinary() {
+	for (var x = 0; x < columns; x++) {
+		for (var y = 0; y < rows; y++) {
+			let style;
+			bit = binary[Math.floor(Math.random()*binary.length)]
+			if (bit == "0") {				
+				style = {
+					fontSize: fontSize, 
+					fill: 'snow',
+					dropShadow: true,
+					dropShadowColor: 'rgba(255, 0, 55, 1)',
+					dropShadowBlur: 8,
+					dropShadowAngle: 0,
+					dropShadowDistance: 0
+				};
+			} else {
+				style = {
+					fontSize: fontSize, 
+					fill: 'snow',
+					dropShadow: true,
+					dropShadowColor: 'rgba(0, 255, 55, 1)',
+					dropShadowBlur: 8,
+					dropShadowAngle: 0,
+					dropShadowDistance: 0
+				};
+			}
+			bitStr = new PIXI.Text(bit, style);
+			
+			app.stage.addChild(bitStr);
 
-for (var x = 1; x < columns; x++) {
-	for (var y = 1; y < rows; y++) {
-		bit = binary[Math.floor(Math.random()*binary.length)]
-		bits = new fabric.Text(
-			bit, {
-			left: x * (fontSize / 1.2),
-			top: y * (fontSize / 1.2),
-			fill: "snow",
-			fontSize: fontSize,
-		});
-		if (bit == "0") {
-			bits.setShadow("0 0 8px #f00");
-		} else {
-			bits.setShadow("0 0 8px #0ff");
+			bitStr.x =  x * (fontSize);
+			bitStr.y =  y * (fontSize);
 		}
-		canvas.add(bits)
 	}
 }
 
-canvas.forEachObject(function(o) {
-	o.selectable = false;
-});
-
-setInterval(function() {
-	bit = canvas._objects[Math.floor(Math.random()*canvas._objects.length)];
-	bit.text = binary[Math.floor(Math.random()*binary.length)];
-	if (bit.text == "0") {
-		bit.setShadow("0 0 8px #f00");
+function updateBinary(delta) {
+	bit = app.stage.children[Math.floor(Math.random()*app.stage.children.length)];
+	bit.setText(binary[Math.floor(Math.random()*binary.length)])
+	if (bit._text == "0") {
+		bit._style._dropShadowColor = "rgba(255, 0, 55, 1)";
 	} else {
-		bit.setShadow("0 0 8px #0ff");
+		bit._style._dropShadowColor = "rgba(0, 255, 55, 1)";
 	}
-	canvas.renderAll();
-}, 10) 
+}
