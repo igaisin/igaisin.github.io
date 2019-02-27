@@ -1,19 +1,17 @@
-	var app;
-	var bitStr, bit;
-	var binary = "01101001011001110110000101101001011100110110100101101110";
-	binary = binary.split("");
-	var fontSize = 22;
+var app;
+var bitStr, bit;
+var binary = "01101001011001110110000101101001011100110110100101101110";
+binary = binary.split("");
+var fontSize = 22;
 
-	var columns = (window.innerWidth / fontSize) - 1,
-	rows = (window.innerHeight / fontSize) - 1;
+var columns = window.innerWidth / fontSize,
+rows = window.innerHeight / fontSize;
 
-	init();
+init();
 
 window.addEventListener("resize", function() {
 	app.renderer.resize(window.innerWidth, window.innerHeight);
 });
-
-
 
 function init() {
 	app = new PIXI.Application(window.innerWidth, window.innerHeight, {
@@ -23,6 +21,7 @@ function init() {
 
 	createBinary();
 
+	setInterval(rain, 256)
 	app.ticker.add(updateBinary);
 	// console.log(app.stage)
 }
@@ -59,6 +58,7 @@ function createBinary() {
 
 			bitStr.x =  x * (fontSize);
 			bitStr.y =  y * (fontSize);
+			// bitStr.y -= fontSize;
 		}
 	}
 }
@@ -71,4 +71,17 @@ function updateBinary(delta) {
 	} else {
 		bit._style._dropShadowColor = "rgba(0, 255, 55, 1)";
 	}
+}
+
+function rain() {
+	app.stage.children.forEach(function(obj, id) {
+		if(obj.y + fontSize > window.innerHeight) {
+		 	obj.y = 0 - fontSize;
+		}
+		if (obj.x + fontSize > window.innerWidth) {
+			obj.x = 0 - fontSize;
+		}
+		obj.y += fontSize;
+		obj.x += fontSize;
+	});
 }
