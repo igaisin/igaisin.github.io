@@ -35,11 +35,21 @@ function createBinary() {
 				style = {
 					fontSize: fontSize, 
 					fill: '#FF4136',
+					// dropShadow: true,
+					// dropShadowColor: '#FF4136',
+					// dropShadowBlur: 1,
+					// dropShadowAngle: -100,
+					// dropShadowDistance: 10
 				};
 			} else {
 				style = {
 					fontSize: fontSize, 
 					fill: '#7FDBFF',
+					// dropShadow: true,
+					// dropShadowColor: '#7FDBFF',
+					// dropShadowBlur: 1,
+					// dropShadowAngle: 100,
+					// dropShadowDistance: 10
 				};
 			}
 			bitStr = new PIXI.Text(bit, style);
