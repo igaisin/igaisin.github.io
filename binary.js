@@ -34,22 +34,12 @@ function createBinary() {
 			if (bit == "0") {				
 				style = {
 					fontSize: fontSize, 
-					fill: 'snow',
-					dropShadow: true,
-					dropShadowColor: 'rgba(255, 0, 55, 1)',
-					dropShadowBlur: 8,
-					dropShadowAngle: 0,
-					dropShadowDistance: 0
+					fill: '#FF4136',
 				};
 			} else {
 				style = {
 					fontSize: fontSize, 
-					fill: 'snow',
-					dropShadow: true,
-					dropShadowColor: 'rgba(0, 255, 55, 1)',
-					dropShadowBlur: 8,
-					dropShadowAngle: 0,
-					dropShadowDistance: 0
+					fill: '#7FDBFF',
 				};
 			}
 			bitStr = new PIXI.Text(bit, style);
@@ -67,9 +57,9 @@ function updateBinary(delta) {
 	bit = app.stage.children[Math.floor(Math.random()*app.stage.children.length)];
 	bit.setText(binary[Math.floor(Math.random()*binary.length)])
 	if (bit._text == "0") {
-		bit._style._dropShadowColor = "rgba(255, 0, 55, 1)";
+		bit._style._fill = "#FF4136";
 	} else {
-		bit._style._dropShadowColor = "rgba(0, 255, 55, 1)";
+		bit._style._fill = "#7FDBFF";
 	}
 }
 
