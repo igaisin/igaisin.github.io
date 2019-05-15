@@ -1,3 +1,5 @@
+window.screen.orientation.lock('portrait-primary');
+
 var app;
 var bitStr, bit;
 var binary = "01101001011001110110000101101001011100110110100101101110";
