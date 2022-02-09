@@ -36,7 +36,7 @@ function createBinary() {
 			if (bit == "0") {				
 				style = {
 					fontSize: fontSize, 
-					fill: '#FF4136',
+					fill: '#6fa8dc',
 					// dropShadow: true,
 					// dropShadowColor: '#FF4136',
 					// dropShadowBlur: 1,
@@ -46,7 +46,7 @@ function createBinary() {
 			} else {
 				style = {
 					fontSize: fontSize, 
-					fill: '#7FDBFF',
+					fill: '#8e7cc3',
 					// dropShadow: true,
 					// dropShadowColor: '#7FDBFF',
 					// dropShadowBlur: 1,
